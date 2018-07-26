@@ -1,4 +1,4 @@
-@import "./_mediaquery.scss";
+@import "./mediaquery";
 
 .sb-app {
   display: flex;
@@ -22,6 +22,32 @@
     @include respond($to-phone) {
       padding: 0;
     };
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    @include respond($to-laptop) {
+      flex-direction: column;
+    };
+  }
+
+  &__block {
+    margin-right: 40px;
+
+    @include respond($to-laptop) {
+      margin-right: 0px;
+    };
+
+    &--fill-space {
+      flex: 1 1 auto;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &__header {

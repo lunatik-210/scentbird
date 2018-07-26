@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import dumbBem from 'dumb-bem';
 import tx from 'transform-props-with';
 
-import {PreviewItem} from 'components';
+import {
+  PreviewItem,
+  BirdBanner
+} from 'components';
 
 import './App.css';
 
@@ -15,6 +18,8 @@ let dumbApp = dumbBem('sb-app');
 let AppWrp = tx(dumbApp)('div');
 
 let Content = tx([{element: 'content'}, dumbApp])('div');
+let Blocks = tx([{element: 'blocks'}, dumbApp])('div');
+let Block = tx([{element: 'block'}, dumbApp])('div');
 let Header = tx([{element: 'header'}, dumbApp])('header');
 
 
@@ -36,7 +41,15 @@ class App extends Component {
       <AppWrp>
         <Content>
           <Header><img src={logo} alt='' /></Header>
-          <PreviewItem {...previewItem} />
+          <Blocks>
+            <Block>
+              <PreviewItem {...previewItem} />
+              <BirdBanner />
+            </Block>
+            <Block modifier='fill-space'>
+              <h1>Space</h1>
+            </Block>
+          </Blocks>
         </Content>
       </AppWrp>
     );

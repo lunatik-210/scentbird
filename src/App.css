@@ -17,6 +17,22 @@
     @media screen and (max-width: 480px) {
       .sb-app__content {
         padding: 0; } }
+  .sb-app__blocks {
+    display: flex;
+    flex-direction: row;
+    width: 100%; }
+    @media screen and (max-width: 992px) {
+      .sb-app__blocks {
+        flex-direction: column; } }
+  .sb-app__block {
+    margin-right: 40px; }
+    @media screen and (max-width: 992px) {
+      .sb-app__block {
+        margin-right: 0px; } }
+    .sb-app__block--fill-space {
+      flex: 1 1 auto; }
+    .sb-app__block:last-child {
+      margin-right: 0; }
   .sb-app__header {
     display: flex;
     flex-direction: row;

@@ -1,0 +1,49 @@
+@import "src/mediaquery";
+
+.sb-bird-banner {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin-top: 30px;
+
+  @include respond($to-laptop) {
+    max-width: 100%;
+    flex-direction: row;
+  };
+
+  @include respond($to-phone) {
+    flex-direction: column-reverse;
+    margin: 0 15px;
+    max-width: 100%;
+  };
+
+  &__banner {
+    width: 100%;
+
+    @include respond($to-laptop) {
+      min-width: 300px;
+      margin-right: 20px;
+    };
+
+    @include respond($to-phone) {
+      width: 100%;
+      margin-right: 0px;
+      margin-top: 30px;
+    };
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__text {
+    margin-top: 30px;
+    font-family: Helvetica;
+    font-size: 14px;
+    letter-spacing: 0;
+
+    @include respond($to-laptop) {
+      margin-top: 0px;
+    };
+  }
+}

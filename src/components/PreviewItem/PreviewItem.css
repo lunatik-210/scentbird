@@ -1,7 +1,7 @@
 .sb-preview-item {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  min-width: 400px;
   padding: 30px;
   border: 1px solid #E6E6E6; }
   @media screen and (max-width: 992px) {
@@ -44,7 +44,6 @@
     margin-bottom: 17px;
     font-family: Helvetica;
     font-size: 14px;
-    color: #000000;
     letter-spacing: 0; }
     .sb-preview-item__cost-info-line--total {
       font-family: Helvetica;
@@ -54,7 +53,6 @@
   .sb-preview-item__coupon-code {
     font-family: Helvetica;
     font-size: 16px;
-    color: #000000;
     letter-spacing: 0;
     margin-top: 40px; }
   .sb-preview-item__link {
