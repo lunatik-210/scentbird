@@ -5,7 +5,8 @@ import tx from 'transform-props-with';
 
 import {
   PreviewItem,
-  BirdBanner
+  BirdBanner,
+  Input
 } from 'components';
 
 import './App.css';
@@ -49,6 +50,7 @@ class App extends Component {
             <Block modifier='fill-space'>
               <Text modifier='title'>MONTH-TO-MONTH SUBSCRIPTION</Text>
               <Text modifier='description'>Billed monthly. Renews automatically, cancel any time. Free shipping.</Text>
+              <Input placeholder='Test'/>
             </Block>
           </Blocks>
         </Content>
