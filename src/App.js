@@ -21,7 +21,7 @@ let Content = tx([{element: 'content'}, dumbApp])('div');
 let Blocks = tx([{element: 'blocks'}, dumbApp])('div');
 let Block = tx([{element: 'block'}, dumbApp])('div');
 let Header = tx([{element: 'header'}, dumbApp])('header');
-
+let Text = tx([{element: 'text'}, dumbApp])('span');
 
 class App extends Component {
   render() {
@@ -47,7 +47,8 @@ class App extends Component {
               <BirdBanner />
             </Block>
             <Block modifier='fill-space'>
-              <h1>Space</h1>
+              <Text modifier='title'>MONTH-TO-MONTH SUBSCRIPTION</Text>
+              <Text modifier='description'>Billed monthly. Renews automatically, cancel any time. Free shipping.</Text>
             </Block>
           </Blocks>
         </Content>
