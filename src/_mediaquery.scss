@@ -1,0 +1,127 @@
+//
+//  MEDIA QUERY VARIABLES, FUNCTIONS AND MIXIN
+//  gist.github.com/cristianferrarig/4755293
+//
+//  @author  Cristian Ferrari
+//  @email   cristianferrarig@gmail.com
+//  @github  cristianferrarig
+//
+//  # Usage
+//  @import "vendor/mediaquery";
+//
+//  # SCSS usage:
+//  @media screen #{$to-phone} { /* CSS here */ }
+//
+//  # Or mixin usage:
+//  @include respond($to-small)   { /* CSS here ... */ };
+//  @include respond($from-small) { /* CSS here ... */ };
+//
+//  @include respond(to 320px)   { /* CSS here ... */ };
+//  @include respond(from 320px) { /* CSS here ... */ };
+//
+//  @include respond(from 320px, $portrait)            { /* CSS here ... */ };
+//  @include respond(from 320px, to 500px, $landscape) { /* CSS here ... */ };
+//
+//  @include respond(from 320px, to 500px)   { /* CSS here ... */ };
+//  @include respond(from 320px, $to-medium) { /* CSS here ... */ };
+//
+
+
+
+@function to($size) {
+  @return unquote('and (max-width: #{$size})');
+}
+@function from($size) {
+  @return unquote('and (min-width: #{1 + $size})');
+}
+@function orientation($orientation) {
+  @return unquote('and (orientation: #{$orientation})');
+}
+
+
+
+@mixin respond($breakpoints...) {
+  $mediaquery: null;
+
+  @each $breakpoint in $breakpoints {
+    @if type-of($breakpoint) == list {
+      $respond: nth($breakpoint, 1);
+      $size:    nth($breakpoint, 2);
+
+      @if      $respond == 'from' { $breakpoint: from($size); }
+      @else if $respond == 'to'   { $breakpoint: to($size); }
+    }
+
+    $mediaquery: append($mediaquery, $breakpoint, space);
+  }
+
+  @media screen #{$mediaquery} {
+    @content;
+  }
+}
+
+
+
+// Generic names
+// ---------------------------------------------------
+
+// Supported sizes
+$size-mini:           480px !default;
+$size-small:          768px !default;
+$size-medium:         992px !default;
+$size-large:          1200px !default;
+$size-oversized:      1500px !default;
+
+// To queries
+$to-mini:             to($size-mini);
+$to-small:            to($size-small);
+$to-medium:           to($size-medium);
+$to-large:            to($size-large);
+$to-oversized:        to($size-oversized);
+
+// From queries
+$from-mini:           from($size-mini);
+$from-small:          from($size-small);
+$from-medium:         from($size-medium);
+$from-large:          from($size-large);
+$from-oversized:      from($size-oversized);
+
+
+
+// Devices names
+// ---------------------------------------------------
+
+// Supported sizes
+$screen-phone:         $size-mini;
+$screen-tablet:        $size-small;
+$screen-laptop:        $size-medium;
+$screen-desktop:       $size-large;
+$screen-cinema:        $size-oversized;
+
+// To queries
+$to-phone:             to($screen-phone);
+$to-tablet:            to($screen-tablet);
+$to-laptop:            to($screen-laptop);
+$to-desktop:           to($screen-desktop);
+$to-cinema:            to($screen-cinema);
+
+// From queries
+$from-phone:           from($screen-phone);
+$from-tablet:          from($screen-tablet);
+$from-laptop:          from($screen-laptop);
+$from-desktop:         from($screen-desktop);
+$from-cinema:          from($screen-cinema);
+
+
+
+// Others
+// ---------------------------------------------------
+
+// Container
+$size-container:        960px !default;
+$to-container:          to($size-container);
+$from-container:        from($size-container);
+
+// Orientation
+$portrait:              orientation(portrait);
+$landscape:             orientation(landscape);

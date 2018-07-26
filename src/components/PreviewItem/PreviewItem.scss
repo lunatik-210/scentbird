@@ -1,0 +1,105 @@
+@import "src/_mediaquery.scss";
+
+.sb-preview-item {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 400px;
+  padding: 30px;
+
+  border: 1px solid #E6E6E6;
+
+  @include respond($to-laptop) {
+    max-width: 100%;
+    flex-direction: row;
+  };
+
+  @include respond($to-phone) {
+    flex-direction: column;
+    border: none;
+    padding: 30px 15px;
+  };
+
+  &__preview-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+
+    @include respond($to-laptop) {
+      max-width: 250px;
+      height: 240px;
+    };
+
+    @include respond($to-phone) {
+      max-width: 100%;
+    };
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &__cost-block {
+    margin-top: 40px;
+    width: 100%;
+
+    @include respond($to-laptop) {
+      margin-top: 0px;
+    };
+
+    @include respond($to-phone) {
+      margin-top: 40px;
+    };
+  }
+
+  &__cost-info-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 17px;
+
+    font-family: Helvetica;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: 0;
+
+    &--total {
+      font-family: Helvetica;
+      font-size: 16px;
+      color: #151515;
+      letter-spacing: 0;
+    }
+  }
+  &__cost-info-left {
+
+  }
+  &__cost-info-right {
+    
+  }
+
+  &__coupon-code {
+    font-family: Helvetica;
+    font-size: 16px;
+    color: #000000;
+    letter-spacing: 0;
+    margin-top: 40px;
+  }
+  &__link {
+    color: #FF408E;
+    border-bottom: 1px dashed #979797;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: none;
+    }
+  }
+
+  &__separator {
+    width: 100%;
+    height: 1px;
+    background: #E6E6E6;
+    margin-bottom: 20px;
+  }
+}
