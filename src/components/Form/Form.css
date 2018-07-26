@@ -1,0 +1,12 @@
+.sb-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-left: -8px;
+  margin-right: -8px; }
+  .sb-form__field {
+    flex-grow: 1; }
+    @media screen and (max-width: 480px) {
+      .sb-form__field {
+        width: 100% !important; } }

@@ -6,7 +6,7 @@ import tx from 'transform-props-with';
 import {
   PreviewItem,
   BirdBanner,
-  Input
+  Form
 } from 'components';
 
 import './App.css';
@@ -21,6 +21,8 @@ let AppWrp = tx(dumbApp)('div');
 let Content = tx([{element: 'content'}, dumbApp])('div');
 let Blocks = tx([{element: 'blocks'}, dumbApp])('div');
 let Block = tx([{element: 'block'}, dumbApp])('div');
+let FormWrp = tx([{element: 'form-wrapper'}, dumbApp])('div');
+let FormTitle = tx([{element: 'form-title'}, dumbApp])('span');
 let Header = tx([{element: 'header'}, dumbApp])('header');
 let Text = tx([{element: 'text'}, dumbApp])('span');
 
@@ -50,7 +52,18 @@ class App extends Component {
             <Block modifier='fill-space'>
               <Text modifier='title'>MONTH-TO-MONTH SUBSCRIPTION</Text>
               <Text modifier='description'>Billed monthly. Renews automatically, cancel any time. Free shipping.</Text>
-              <Input placeholder='Test'/>
+              <FormWrp>
+                <FormTitle>Shipping address</FormTitle>
+                <Form />
+              </FormWrp>
+              <FormWrp>
+                <FormTitle>Billing address</FormTitle>
+                <Form />
+              </FormWrp>
+              <FormWrp>
+                <FormTitle>Secure credit card payment</FormTitle>
+                <Form />
+              </FormWrp>
             </Block>
           </Blocks>
         </Content>

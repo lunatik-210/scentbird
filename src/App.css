@@ -56,4 +56,13 @@
           font-size: 22px; } }
     .sb-app__text--description {
       margin-top: 10px;
+      margin-bottom: 40px;
       color: #FF408E; }
+  .sb-app__form-wrapper {
+    margin-bottom: 30px; }
+  .sb-app__form-title {
+    display: inline-block;
+    font-family: Helvetica;
+    font-size: 24px;
+    letter-spacing: 0;
+    margin-bottom: 20px; }

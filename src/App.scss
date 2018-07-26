@@ -82,7 +82,20 @@
 
     &--description {
       margin-top: 10px;
+      margin-bottom: 40px;
       color: $main-color;
     }
+  }
+
+  &__form-wrapper {
+    margin-bottom: 30px;
+  }
+
+  &__form-title {
+    display: inline-block;
+    font-family: Helvetica;
+    font-size: 24px;
+    letter-spacing: 0;
+    margin-bottom: 20px;
   }
 }

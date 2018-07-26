@@ -28,7 +28,7 @@ export class Input extends Component {
 
     this.state = {
       hasValue: false,
-      hasError: true
+      hasError: false
     }
 
     _.bindAll(this, [
