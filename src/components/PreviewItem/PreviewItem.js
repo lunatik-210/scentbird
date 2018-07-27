@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import dumbBem from 'dumb-bem';
 import tx from 'transform-props-with';
 
+import {CheckBox} from '../CheckBox';
+
 import './PreviewItem.css';
 
 
@@ -16,6 +18,7 @@ let CostBlock =  tx([{element: 'cost-block'}, dumbPreviewItem])('div');
 let CostInfoLine =  tx([{element: 'cost-info-line'}, dumbPreviewItem])('div');
 let CostInfoLeft =  tx([{element: 'cost-info-left'}, dumbPreviewItem])('span');
 let CostInfoRight =  tx([{element: 'cost-info-right'}, dumbPreviewItem])('span');
+let Group = tx([{element: 'group'}, dumbPreviewItem])('div');
 
 let CouponCode =  tx([{element: 'coupon-code'}, dumbPreviewItem])('span');
 
@@ -42,28 +45,31 @@ export class PreviewItem extends Component {
           <Separator />
           <CostInfoLine>
             <CostInfoLeft>Monthly subscription</CostInfoLeft>
-            <CostInfoRight>{`$${bill.monthlySubscription}`}</CostInfoRight>
+            <CostInfoRight>{bill.monthlySubscription}</CostInfoRight>
           </CostInfoLine>
           <CostInfoLine>
             <CostInfoLeft>Shipping</CostInfoLeft>
-            <CostInfoRight>{`$${bill.shipping}`}</CostInfoRight>
+            <CostInfoRight>{bill.shipping}</CostInfoRight>
           </CostInfoLine>
           <CostInfoLine>
             <CostInfoLeft>Tax</CostInfoLeft>
-            <CostInfoRight>{`$${bill.tax}`}</CostInfoRight>
+            <CostInfoRight>{bill.tax}</CostInfoRight>
           </CostInfoLine>
           <CostInfoLine>
             <CostInfoLeft>Discount</CostInfoLeft>
-            <CostInfoRight>{`$${bill.discount}`}</CostInfoRight>
+            <CostInfoRight>{bill.discount}</CostInfoRight>
           </CostInfoLine>
           <CostInfoLine>
             <CostInfoLeft>Credit (Balance $100)</CostInfoLeft>
-            <CostInfoRight>{`$${bill.credit}`}</CostInfoRight>
+            <Group>
+              <span>{bill.credit}</span>
+              <CheckBox checked={true} />
+            </Group>
           </CostInfoLine>
           <Separator />
           <CostInfoLine modifier='total'>
             <CostInfoLeft>TOTAL:</CostInfoLeft>
-            <CostInfoRight>{`$${bill.total}`}</CostInfoRight>
+            <CostInfoRight>{bill.total}</CostInfoRight>
           </CostInfoLine>
           <CouponCode>Have a <Link>coupon code</Link>?</CouponCode>
         </CostBlock>

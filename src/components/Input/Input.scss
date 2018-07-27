@@ -56,9 +56,9 @@
     margin-top: -9px;
     top: 50%;
     cursor: text;
-    background: #FAFAFA;
 
     transition: all 0.13s linear;
+    z-index: 1;
 
     &--disabled {
       pointer-events: none;
@@ -68,8 +68,16 @@
       color: $error-color;
     }
 
-    &--light {
-      background: white;
+    &:after {
+      height: 3px;
+      right: -2px;
+      left: -2px;
+      content: '';
+      display: block;
+      position: absolute;
+      margin-top: -1.5px;
+      top: 50%;
+      z-index: -1;
     }
   }
 
@@ -86,6 +94,8 @@
     top: 0;
     font-size: 12px;
     margin-top: -6px;
-    background: white;
+    &:after {
+      background: white;
+    }
   }
 }

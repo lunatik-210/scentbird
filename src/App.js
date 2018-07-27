@@ -47,12 +47,12 @@ class App extends Component {
     let previewItem = {
       previewImg: spirit,
       bill: {
-        monthlySubscription: 14.95,
+        monthlySubscription: '$14.95',
         shipping: 'FREE',
-        tax: 2.35,
-        discount: 5,
-        credit: 50,
-        total: 25
+        tax: '$2.35',
+        discount: '-$5',
+        credit: '$50',
+        total: '$25'
       }
     }
 
@@ -99,7 +99,7 @@ class App extends Component {
                 )
               }
 
-              <FormWrp>
+              <FormWrp modifier='card'>
                 <FormTitle>Secure credit card payment</FormTitle>
                 <CardForm />
               </FormWrp>

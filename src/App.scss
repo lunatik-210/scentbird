@@ -93,6 +93,12 @@
     @include respond($to-phone) {
       padding: 0 15px;
     };
+
+    &--card {
+      @include respond($to-phone) {
+        padding: 0;
+      };
+    }
   }
 
   &__form-title {
@@ -101,6 +107,11 @@
     font-size: 24px;
     letter-spacing: 0;
     margin-bottom: 20px;
+
+    @include respond($to-phone) {
+      width: 100%;
+      text-align: center;
+    };
   }
 
   &__enable-billing-line {
@@ -129,5 +140,9 @@
     .sb-button--link {
       margin-right: 40px;
     }
+
+    @include respond($to-phone) {
+      padding: 0 15px;
+    };
   }
 }

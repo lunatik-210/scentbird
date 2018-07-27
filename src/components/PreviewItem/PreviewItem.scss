@@ -101,4 +101,13 @@
     background: #E6E6E6;
     margin-bottom: 20px;
   }
+
+  &__group {
+    display: flex;
+    flex-direction: row;
+
+    .sb-checkbox {
+      margin-left: 10px;
+    }
+  }
 }

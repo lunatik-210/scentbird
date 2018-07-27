@@ -63,12 +63,19 @@
     @media screen and (max-width: 480px) {
       .sb-app__form-wrapper {
         padding: 0 15px; } }
+    @media screen and (max-width: 480px) {
+      .sb-app__form-wrapper--card {
+        padding: 0; } }
   .sb-app__form-title {
     display: inline-block;
     font-family: Helvetica;
     font-size: 24px;
     letter-spacing: 0;
     margin-bottom: 20px; }
+    @media screen and (max-width: 480px) {
+      .sb-app__form-title {
+        width: 100%;
+        text-align: center; } }
   .sb-app__enable-billing-line {
     display: flex;
     flex-direction: row;
@@ -89,3 +96,6 @@
     justify-content: flex-end; }
     .sb-app__form-submit-line .sb-button--link {
       margin-right: 40px; }
+    @media screen and (max-width: 480px) {
+      .sb-app__form-submit-line {
+        padding: 0 15px; } }

@@ -37,14 +37,22 @@
     margin-top: -9px;
     top: 50%;
     cursor: text;
-    background: #FAFAFA;
-    transition: all 0.13s linear; }
+    transition: all 0.13s linear;
+    z-index: 1; }
     .sb-input__label--disabled {
       pointer-events: none; }
     .sb-input__label--error {
       color: #FF0000; }
-    .sb-input__label--light {
-      background: white; }
+    .sb-input__label:after {
+      height: 3px;
+      right: -2px;
+      left: -2px;
+      content: '';
+      display: block;
+      position: absolute;
+      margin-top: -1.5px;
+      top: 50%;
+      z-index: -1; }
   .sb-input__error-msg {
     font-family: Helvetica;
     color: #FF0000;
@@ -55,5 +63,7 @@
   .sb-input__input:focus + .sb-input__label {
     top: 0;
     font-size: 12px;
-    margin-top: -6px;
-    background: white; }
+    margin-top: -6px; }
+    .sb-input__input--valid + .sb-input__label:after,
+    .sb-input__input:focus + .sb-input__label:after {
+      background: white; }
