@@ -1,6 +1,8 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import sizeMe from 'react-sizeme';
 
 import {
   changeFormValue,
@@ -42,6 +44,16 @@ let FormSubmitLine = tx([{element: 'form-submit-line'}, dumbApp])('div');
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    _.bindAll(this, [
+      'renderHeading',
+      'renderForms',
+      'renderToLaptop'
+    ]);
+  }
+
   render() {
     let previewItem = {
       previewImg: spirit,
@@ -55,84 +67,147 @@ class App extends Component {
       }
     }
 
+    if (this.props.size.width <= 992) return this.renderToLaptop(previewItem);
+
     return (
       <AppWrp>
         <Content>
           <Header><img src={logo} alt='' /></Header>
           <Blocks>
-
             <Block>
               <PreviewItem {...previewItem} />
               <BirdBanner />
             </Block>
 
             <FormBlock modifier='fill-space'>
-              <Text modifier='title'>MONTH-TO-MONTH SUBSCRIPTION</Text>
-              <Text modifier='description'>Billed monthly. Renews automatically, cancel any time. Free shipping.</Text>
-
-              <FormWrp>
-                <FormTitle>Create account</FormTitle>
-                <Form 
-                  actions={this.props.actions}
-                  schema={this.props.forms.accountForm}
-                  name='accountForm'
-                />
-              </FormWrp>
-
-              <FormWrp>
-                <FormTitle>Shipping address</FormTitle>
-                <Form 
-                  actions={this.props.actions}
-                  schema={this.props.forms.userForm}
-                  name='userForm'
-                />
-                <Form 
-                  actions={this.props.actions}
-                  schema={this.props.forms.shippingForm}
-                  name='shippingForm'
-                />
-                <EnableBillingLine>
-                  <CheckBox
-                    onChange={() => this.props.actions.triggerAddressAsBilling()}
-                    checked={this.props.useAddressAsBilling}
-                    modifier='reverse'
-                  />
-                  <span>Use this address as my billing address</span>
-                </EnableBillingLine>
-              </FormWrp>
-
-              {
-                !this.props.useAddressAsBilling && (
-                  <FormWrp>
-                    <FormTitle>Billing address</FormTitle>
-                    <Form 
-                      actions={this.props.actions}
-                      schema={this.props.forms.billingForm}
-                      name='billingForm'
-                    />
-                  </FormWrp>
-                )
-              }
-
-              <FormWrp modifier='card'>
-                <FormTitle>Secure credit card payment</FormTitle>
-                <CardForm 
-                  actions={this.props.actions}
-                  schema={this.props.forms.cardForm}
-                  name='cardForm'
-                />
-              </FormWrp>
-
-              <FormSubmitLine>
-                <Button modifier='link'>Back</Button>
-                <Button onClick={() => this.props.actions.submitForm()}>BUY NOW</Button>
-              </FormSubmitLine>
+              {this.renderHeading()}
+              {this.renderForms()}
             </FormBlock>
 
           </Blocks>
         </Content>
       </AppWrp>
     );
+  }
+
+  renderToLaptop(previewItem) {
+    return (
+      <AppWrp>
+        <Content>
+          <Header><img src={logo} alt='' /></Header>
+          <Blocks>
+            {this.renderHeading()}
+
+            <Block>
+              <PreviewItem {...previewItem} />
+            </Block>
+
+            <FormBlock modifier='fill-space'>
+              {this.renderForms()}
+            </FormBlock>
+
+            <Block>
+              <BirdBanner />
+            </Block>
+          </Blocks>
+        </Content>
+      </AppWrp>
+    );
+  }
+
+  renderToPhone(previewItem) {
+    return (
+      <AppWrp>
+        <Content>
+          <Header><img src={logo} alt='' /></Header>
+          <Blocks>
+            <Block>
+              <PreviewItem {...previewItem} />
+              <BirdBanner />
+            </Block>
+
+            <FormBlock modifier='fill-space'>
+              {this.renderHeading()}
+              {this.renderForms()}
+            </FormBlock>
+
+          </Blocks>
+        </Content>
+      </AppWrp>
+    );
+  }
+
+  renderHeading() {
+    return (
+      <React.Fragment>
+        <Text modifier='title'>MONTH-TO-MONTH SUBSCRIPTION</Text>
+        <Text modifier='description'>Billed monthly. Renews automatically, cancel any time. Free shipping.</Text>
+      </React.Fragment>
+    )
+  }
+
+  renderForms() {
+    return (
+      <React.Fragment>
+        <FormWrp>
+          <FormTitle>Create account</FormTitle>
+          <Form 
+            actions={this.props.actions}
+            schema={this.props.forms.accountForm}
+            name='accountForm'
+          />
+        </FormWrp>
+
+        <FormWrp>
+          <FormTitle>Shipping address</FormTitle>
+          <Form 
+            actions={this.props.actions}
+            schema={this.props.forms.userForm}
+            name='userForm'
+          />
+          <Form 
+            actions={this.props.actions}
+            schema={this.props.forms.shippingForm}
+            name='shippingForm'
+          />
+          <EnableBillingLine>
+            <CheckBox
+              onChange={() => this.props.actions.triggerAddressAsBilling()}
+              checked={this.props.useAddressAsBilling}
+              modifier='reverse'
+            />
+            <span>Use this address as my billing address</span>
+          </EnableBillingLine>
+        </FormWrp>
+
+        {
+          !this.props.useAddressAsBilling && (
+            <FormWrp>
+              <FormTitle>Billing address</FormTitle>
+              <Form 
+                actions={this.props.actions}
+                schema={this.props.forms.billingForm}
+                name='billingForm'
+              />
+            </FormWrp>
+          )
+        }
+
+        <FormWrp modifier='card'>
+          <FormTitle>Secure credit card payment</FormTitle>
+          <CardForm 
+            actions={this.props.actions}
+            schema={this.props.forms.cardForm}
+            name='cardForm'
+          />
+        </FormWrp>
+
+        <FormSubmitLine>
+          <Button modifier='link'>Back</Button>
+          <Button onClick={() => this.props.actions.submitForm()}>BUY NOW</Button>
+        </FormSubmitLine>
+      </React.Fragment>
+    )
   }
 }
 
@@ -148,4 +223,4 @@ let mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(sizeMe()(App));
