@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Form} from './Form';
-
+import {USStates} from './states';
 
 let userInfo = [
   {
@@ -60,9 +60,9 @@ let addressSchema = [
   },
   {
     name: 'state',
-    label: 'State',
-    space: '33%',
-    validation: ['required']
+    type: 'select',
+    data: USStates,
+    space: '33%'
   },
   {
     name: 'country',

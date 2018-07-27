@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import PropTypes from 'prop-types';
 
 import dumbBem from 'dumb-bem';
 import tx from 'transform-props-with';

@@ -13,6 +13,7 @@ let InputWrp = tx(dumbInput)('div');
 
 let LabeledInput = tx([{element: 'labeled-input'}, dumbInput])('div');
 let InputEl = tx([{element: 'input'}, dumbInput])('input');
+let Select = tx([{element: 'select'}, dumbInput])('select');
 let Label = tx([{element: 'label'}, dumbInput])('label');
 let ErrorMsg = tx([{element: 'error-msg'}, dumbInput])('span');
 
@@ -62,16 +63,27 @@ export class Input extends Component {
 
     return (
       <InputWrp>
-        <LabeledInput>
-          <InputEl
-            __ref={(input) => { this.input = input; }}
-            type={this.props.name === 'password' ? 'password' : ''}
-            modifier={modifiers.join(' ')}
-            autoComplete='nope'
-            onChange={this.onChange}
-            onBlur={this.onBlur}
-            defaultValue={this.props.defaultValue}
-          />
+        <LabeledInput modifier={this.props.type === 'select' ? 'select' : ''}>
+          {
+            _.isUndefined(this.props.type) && (
+              <InputEl
+                __ref={(input) => { this.input = input; }}
+                type={this.props.name === 'password' ? 'password' : ''}
+                modifier={modifiers.join(' ')}
+                autoComplete='nope'
+                onChange={this.onChange}
+                onBlur={this.onBlur}
+                defaultValue={this.props.defaultValue}
+              />
+            )
+          }
+          {
+            this.props.type === 'select' && (
+              <Select>
+                {this.props.data && _.map(this.props.data, (value, key) => <option key={key}>{value}</option>)}
+              </Select>
+            )
+          }
           {
             this.props.placeholder && (
               <Label

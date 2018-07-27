@@ -25,7 +25,10 @@ export class Form extends Component {
   constructor(props) {
     super(props);
 
-    _.bindAll(this, ['renderInput', 'renderText'])
+    _.bindAll(this, [
+      'renderInput',
+      'renderText'
+    ]);
   } 
 
   render() {
@@ -34,6 +37,7 @@ export class Form extends Component {
         {this.props.schema.map(field => (
           <FormField key={field.name} style={{width: field.space}}>
             {_.isUndefined(field.type) && this.renderInput(field)}
+            {field.type === 'select' && this.renderInput(field)}
             {field.type === 'text' && this.renderText(field)}
           </FormField>
         ))}
@@ -49,6 +53,7 @@ export class Form extends Component {
         modifiers={field.modifiers}
         placeholder={field.label}
         defaultValue={field.defaultValue}
+        data={field.data}
       />
     )
   }
