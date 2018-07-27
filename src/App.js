@@ -170,6 +170,11 @@ class App extends Component {
             schema={this.props.forms.shippingForm}
             name='shippingForm'
           />
+          <Form
+            actions={this.props.actions}
+            schema={this.props.forms.phoneForm}
+            name='phoneForm'
+          />
           <EnableBillingLine>
             <CheckBox
               onChange={() => this.props.actions.triggerAddressAsBilling()}

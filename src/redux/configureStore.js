@@ -5,7 +5,8 @@ import {
   cardSchema,
   userInfoSchema,
   accountSchema,
-  addressSchema
+  addressSchema,
+  phoneSchema
 } from 'models';
 
 
@@ -41,6 +42,7 @@ export default function configureStore (initialState = {}) {
       cardForm: schemaToStore(cardSchema),
       shippingForm: schemaToStore(addressSchema),
       billingForm: schemaToStore(addressSchema),
+      phoneForm: schemaToStore(phoneSchema)
     },
     useAddressAsBilling: true,
     submitted: false

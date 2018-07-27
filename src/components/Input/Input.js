@@ -62,7 +62,7 @@ export class Input extends Component {
 
     return (
       <InputWrp>
-        <LabeledInput modifier={this.props.type === 'select' ? 'select' : ''}>
+        <LabeledInput modifier={(this.props.type === 'select' ? 'select' : '' ) + ` ${modifiers.join(' ')}`}>
           {
             _.isUndefined(this.props.type) && (
               <InputEl

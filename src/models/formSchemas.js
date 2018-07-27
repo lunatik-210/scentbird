@@ -120,7 +120,10 @@ export let addressSchema = [
     space: '100%',
     modifiers: ['disabled'],
     required: true
-  },
+  }
+];
+
+export let phoneSchema = [
   {
     name: 'mobile_phone',
     label: 'Mobile phone (optional)',
@@ -133,4 +136,4 @@ export let addressSchema = [
     modifiers: ['disabled'],
     space: '50%'
   }
-];
+]

@@ -13,6 +13,13 @@
   user-select: none;
   cursor: pointer;
   padding: 0px 30px; }
+  @media screen and (max-width: 992px) {
+    .sb-button {
+      width: 290px; } }
+  @media screen and (max-width: 480px) {
+    .sb-button {
+      width: 100%;
+      margin-bottom: 25px; } }
   .sb-button img {
     margin-left: 50px; }
   .sb-button--link {

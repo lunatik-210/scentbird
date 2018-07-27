@@ -10,7 +10,7 @@ export function validateFieldValue(value, field, form, strong = false) {
   }
 
   if (field.name === 'password') {
-    if (!value || value.length === 0) return 'Field is required';
+    if (value.length < 10) return 'Should be no less than 10 symbols';
   }
 
   if (field.name === 'email') {

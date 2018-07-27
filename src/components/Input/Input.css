@@ -22,7 +22,7 @@
       right: 14px;
       pointer-events: none; }
     .sb-input__labeled-input--light.sb-input__labeled-input:after {
-      border-top: 6px solid #FF408E; }
+      border-top: 6px solid #D8D8D8; }
   .sb-input--error {
     border-color: #FF0000; }
   .sb-input__select {

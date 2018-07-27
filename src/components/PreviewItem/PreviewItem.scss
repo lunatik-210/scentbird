@@ -13,6 +13,7 @@
   @include respond($to-laptop) {
     max-width: 100%;
     flex-direction: row;
+    margin-bottom: 35px;
   };
 
   @include respond($to-phone) {
@@ -48,10 +49,12 @@
 
     @include respond($to-laptop) {
       margin-top: 0px;
+      margin-left: 30px;
     };
 
     @include respond($to-phone) {
       margin-top: 40px;
+      margin-left: 0px;
     };
   }
 
@@ -85,10 +88,15 @@
     letter-spacing: 0;
     margin-top: 40px;
   }
+
   &__link {
     color: $main-color;
     border-bottom: 1px dashed #979797;
     cursor: pointer;
+
+    @include respond($to-phone) {
+      color: black;
+    };
 
     &:hover {
       border-bottom: none;
