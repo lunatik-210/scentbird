@@ -32,6 +32,16 @@
         }
       }
     }
+
+    &--light {
+      &.sb-input {
+        &__labeled-input {
+          &:after {
+            border-top: 6px solid $main-color;
+          }
+        }
+      }
+    }
   }
 
   &--error {
@@ -64,6 +74,12 @@
     font-size: 18px;
     background: #FAFAFA;
     border: 1px solid #E6E6E6;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
     &:focus {
       background: white;
@@ -133,7 +149,7 @@
     margin-top: 5px;
   }
 
-  &__input--valid + &__label,
+  &__input--has-value + &__label,
   &__input:focus + &__label {
     top: 0;
     font-size: 12px;

@@ -21,6 +21,8 @@
       border-top: 6px solid #FF408E;
       right: 14px;
       pointer-events: none; }
+    .sb-input__labeled-input--light.sb-input__labeled-input:after {
+      border-top: 6px solid #FF408E; }
   .sb-input--error {
     border-color: #FF0000; }
   .sb-input__select {
@@ -44,6 +46,9 @@
     font-size: 18px;
     background: #FAFAFA;
     border: 1px solid #E6E6E6; }
+    .sb-input__select::-webkit-outer-spin-button, .sb-input__select::-webkit-inner-spin-button, .sb-input__input::-webkit-outer-spin-button, .sb-input__input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
     .sb-input__select:focus, .sb-input__input:focus {
       background: white;
       border: 1px solid #FF408E; }
@@ -88,11 +93,11 @@
     font-size: 12px;
     color: #FF0000;
     margin-top: 5px; }
-  .sb-input__input--valid + .sb-input__label,
+  .sb-input__input--has-value + .sb-input__label,
   .sb-input__input:focus + .sb-input__label {
     top: 0;
     font-size: 12px;
     margin-top: -6px; }
-    .sb-input__input--valid + .sb-input__label:after,
+    .sb-input__input--has-value + .sb-input__label:after,
     .sb-input__input:focus + .sb-input__label:after {
       background: white; }

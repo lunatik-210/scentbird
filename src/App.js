@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 
 import {
   changeFormValue,
-  submitForm
+  submitForm,
+  triggerAddressAsBilling
 } from 'redux/actions';
 
 import dumbBem from 'dumb-bem';
@@ -13,9 +14,7 @@ import tx from 'transform-props-with';
 import {
   PreviewItem,
   BirdBanner,
-  AccountForm,
-  UserForm,
-  AddressForm,
+  Form,
   CardForm,
   CheckBox,
   Button
@@ -43,13 +42,6 @@ let FormSubmitLine = tx([{element: 'form-submit-line'}, dumbApp])('div');
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showBilling: false
-    }
-  }
-
   render() {
     let previewItem = {
       previewImg: spirit,
@@ -80,17 +72,29 @@ class App extends Component {
 
               <FormWrp>
                 <FormTitle>Create account</FormTitle>
-                <AccountForm />
+                <Form 
+                  actions={this.props.actions}
+                  schema={this.props.forms.accountForm}
+                  name='accountForm'
+                />
               </FormWrp>
 
               <FormWrp>
                 <FormTitle>Shipping address</FormTitle>
-                <UserForm />
-                <AddressForm />
+                <Form 
+                  actions={this.props.actions}
+                  schema={this.props.forms.userForm}
+                  name='userForm'
+                />
+                <Form 
+                  actions={this.props.actions}
+                  schema={this.props.forms.shippingForm}
+                  name='shippingForm'
+                />
                 <EnableBillingLine>
                   <CheckBox
-                    onChange={(checked) => this.setState({showBilling: !checked})}
-                    checked={!this.state.showBilling}
+                    onChange={() => this.props.actions.triggerAddressAsBilling()}
+                    checked={this.props.useAddressAsBilling}
                     modifier='reverse'
                   />
                   <span>Use this address as my billing address</span>
@@ -98,17 +102,25 @@ class App extends Component {
               </FormWrp>
 
               {
-                this.state.showBilling && (
+                !this.props.useAddressAsBilling && (
                   <FormWrp>
                     <FormTitle>Billing address</FormTitle>
-                    <AddressForm />
+                    <Form 
+                      actions={this.props.actions}
+                      schema={this.props.forms.billingForm}
+                      name='billingForm'
+                    />
                   </FormWrp>
                 )
               }
 
               <FormWrp modifier='card'>
                 <FormTitle>Secure credit card payment</FormTitle>
-                <CardForm />
+                <CardForm 
+                  actions={this.props.actions}
+                  schema={this.props.forms.cardForm}
+                  name='cardForm'
+                />
               </FormWrp>
 
               <FormSubmitLine>
@@ -130,7 +142,8 @@ let mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       changeFormValue,
-      submitForm
+      submitForm,
+      triggerAddressAsBilling
     }, dispatch)
   }
 };

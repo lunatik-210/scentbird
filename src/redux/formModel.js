@@ -65,7 +65,7 @@ export let accountSchema = [
   {
     name: 'password',
     label: 'Password',
-    validation: ['required'],
+    validation: ['required', 'password'],
     space: '50%'
   }
 ];

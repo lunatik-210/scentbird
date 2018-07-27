@@ -1,8 +1,8 @@
 export const UPDATE_FORM_VALUE = 'UPDATE_FORM_VALUE';
 export const SUBMIT_FORM = 'SUBMIT_FORM';
+export const TRIGGER_ADDRESS_AS_BILLING = 'TRIGGER_ADDRESS_AS_BILLING';
 
 export function changeFormValue(form, field, value) {
-  console.log(form, field, value);
   return {
     form,
     field,
@@ -11,9 +11,14 @@ export function changeFormValue(form, field, value) {
   }
 }
 
-export function submitForm(account) {
+export function submitForm() {
   return {
-    account,
     type: SUBMIT_FORM
+  }
+}
+
+export function triggerAddressAsBilling() {
+  return {
+    type: TRIGGER_ADDRESS_AS_BILLING
   }
 }

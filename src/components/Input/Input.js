@@ -32,8 +32,7 @@ export class Input extends Component {
     this.input = React.createRef();
 
     this.state = {
-      hasValue: false,
-      hasError: false
+      hasValue: false
     }
 
     _.bindAll(this, [
@@ -44,8 +43,8 @@ export class Input extends Component {
   }
 
   render() {
-    let { hasValue, hasError } = this.state;
-    let valid = !hasError && hasValue;
+    let { hasValue } = this.state;
+    let hasError = !!this.props.error;
 
     let modifiers = [];
 
@@ -57,8 +56,8 @@ export class Input extends Component {
       modifiers.push('error');
     }
 
-    if (valid) {
-      modifiers.push('valid');
+    if (hasValue) {
+      modifiers.push('has-value');
     }
 
     return (
@@ -68,19 +67,23 @@ export class Input extends Component {
             _.isUndefined(this.props.type) && (
               <InputEl
                 __ref={(input) => { this.input = input; }}
-                type={this.props.name === 'password' ? 'password' : ''}
+                type={this.props.fieldType || ''}
                 modifier={modifiers.join(' ')}
                 autoComplete='nope'
                 onChange={this.onChange}
                 onBlur={this.onBlur}
-                defaultValue={this.props.defaultValue}
+                value={this.props.value}
               />
             )
           }
           {
             this.props.type === 'select' && (
-              <Select>
-                {this.props.data && _.map(this.props.data, (value, key) => <option key={key}>{value}</option>)}
+              <Select
+                modifier={modifiers.join(' ')}
+                onChange={this.onChange}
+                value={this.props.value}
+              >
+                {this.props.data && _.map(this.props.data, (value, key) => <option key={key} value={key}>{value}</option>)}
               </Select>
             )
           }
@@ -95,23 +98,25 @@ export class Input extends Component {
             )
           }
         </LabeledInput>
-        {hasError && <ErrorMsg>Test</ErrorMsg>}
+        {hasError && <ErrorMsg>{this.props.error}</ErrorMsg>}
       </InputWrp>
     );
   }
 
   onChange(event) {
+    let value = event.target.value;
+
     this.setState({
-      hasValue: Boolean(event.target.value),
-      hasError: false
-    })
+      hasValue: Boolean(value)
+    });
+
+    _.isFunction(this.props.onChange) && this.props.onChange(value);
   }
 
   onBlur(event) {
     this.setState({
-      value: Boolean(event.target.value),
-      hasError: false
-    })
+      hasValue: Boolean(event.target.value)
+    });
   }
 
   onLabelClick() {

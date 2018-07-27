@@ -19,7 +19,9 @@ let FormTextField = tx([{element: 'text-field'}, dumbForm])('div');
 
 export class Form extends Component {
   static propTypes = {
-    schema: PropTypes.array.isRequired
+    schema: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
+    name: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -34,7 +36,7 @@ export class Form extends Component {
   render() {
     return (
       <FormWrp>
-        {this.props.schema.map(field => (
+        {_.map(this.props.schema, field => (
           <FormField key={field.name} style={{width: field.space}}>
             {_.isUndefined(field.type) && this.renderInput(field)}
             {field.type === 'select' && this.renderInput(field)}
@@ -50,10 +52,14 @@ export class Form extends Component {
       <Input
         name={field.name}
         type={field.type}
+        fieldType={field.fieldType}
         modifiers={field.modifiers}
         placeholder={field.label}
         defaultValue={field.defaultValue}
         data={field.data}
+        value={field.value}
+        error={field.error}
+        onChange={(value) => this.props.actions.changeFormValue(this.props.name, field.name, value)}
       />
     )
   }

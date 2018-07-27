@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import dumbBem from 'dumb-bem';
 import tx from 'transform-props-with';
@@ -12,9 +12,6 @@ import encryption from 'images/encryption.svg';
 import ccards from 'images/ccards.svg';
 
 
-import {cardSchema} from 'models';
-
-
 let dumbCardForm = dumbBem('sb-card-form');
 let CardFormWrp = tx(dumbCardForm)('div');
 
@@ -23,6 +20,11 @@ let Encryption = tx([{element: 'encryption'}, dumbCardForm])('div');
 
 
 export class CardForm extends Component {
+  static propTypes = {
+    schema: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
+  };
+
   render() {
     return (
       <CardFormWrp>
@@ -33,7 +35,11 @@ export class CardForm extends Component {
           </Encryption>
           <img src={ccards} alt='' />
         </Header>
-        <Form schema={cardSchema} />
+        <Form 
+          actions={this.props.actions}
+          schema={this.props.schema}
+          name='cardForm'
+        />
       </CardFormWrp>
     );
   }
