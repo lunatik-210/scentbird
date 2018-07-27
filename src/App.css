@@ -3,15 +3,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 18px; }
+  margin-top: 18px;
+  margin-bottom: 250px; }
   .sb-app__content {
     display: flex;
     flex-direction: column;
-    min-width: 1200px;
+    max-width: 1200px;
     padding-right: 30px; }
     @media screen and (max-width: 1200px) {
       .sb-app__content {
-        min-width: 0;
         width: 100%;
         padding-left: 30px; } }
     @media screen and (max-width: 480px) {
@@ -60,9 +60,26 @@
       color: #FF408E; }
   .sb-app__form-wrapper {
     margin-bottom: 30px; }
+    @media screen and (max-width: 480px) {
+      .sb-app__form-wrapper {
+        padding: 0 15px; } }
   .sb-app__form-title {
     display: inline-block;
     font-family: Helvetica;
     font-size: 24px;
     letter-spacing: 0;
     margin-bottom: 20px; }
+  .sb-app__enable-billing-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 10px; }
+    .sb-app__enable-billing-line span {
+      opacity: 0.6;
+      font-family: Helvetica;
+      font-size: 14px;
+      color: #000000;
+      text-align: left;
+      line-height: 20px;
+      margin-left: 10px; }

@@ -7,15 +7,15 @@
   justify-content: center;
   align-items: center;
   margin-top: 18px;
+  margin-bottom: 250px;
 
   &__content {
     display: flex;
     flex-direction: column;
-    min-width: $size-large;
+    max-width: $size-large;
     padding-right: 30px;
 
     @include respond($to-desktop) {
-      min-width: 0;
       width: 100%;
       padding-left: 30px;
     };
@@ -89,6 +89,10 @@
 
   &__form-wrapper {
     margin-bottom: 30px;
+
+    @include respond($to-phone) {
+      padding: 0 15px;
+    };
   }
 
   &__form-title {
@@ -97,5 +101,23 @@
     font-size: 24px;
     letter-spacing: 0;
     margin-bottom: 20px;
+  }
+
+  &__enable-billing-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
+
+    span {
+      opacity: 0.6;
+      font-family: Helvetica;
+      font-size: 14px;
+      color: #000000;
+      text-align: left;
+      line-height: 20px;
+      margin-left: 10px;
+    }
   }
 }

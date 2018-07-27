@@ -6,7 +6,11 @@ import tx from 'transform-props-with';
 import {
   PreviewItem,
   BirdBanner,
-  Form
+  AccountForm,
+  UserForm,
+  AddressForm,
+  CardForm,
+  CheckBox
 } from 'components';
 
 import './App.css';
@@ -25,8 +29,16 @@ let FormWrp = tx([{element: 'form-wrapper'}, dumbApp])('div');
 let FormTitle = tx([{element: 'form-title'}, dumbApp])('span');
 let Header = tx([{element: 'header'}, dumbApp])('header');
 let Text = tx([{element: 'text'}, dumbApp])('span');
+let EnableBillingLine = tx([{element: 'enable-billing-line'}, dumbApp])('span');
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showBilling: false
+    }
+  }
+
   render() {
     let previewItem = {
       previewImg: spirit,
@@ -53,16 +65,33 @@ class App extends Component {
               <Text modifier='title'>MONTH-TO-MONTH SUBSCRIPTION</Text>
               <Text modifier='description'>Billed monthly. Renews automatically, cancel any time. Free shipping.</Text>
               <FormWrp>
-                <FormTitle>Shipping address</FormTitle>
-                <Form />
+                <FormTitle>Create account</FormTitle>
+                <AccountForm />
               </FormWrp>
               <FormWrp>
-                <FormTitle>Billing address</FormTitle>
-                <Form />
+                <FormTitle>Shipping address</FormTitle>
+                <UserForm />
+                <AddressForm />
+                <EnableBillingLine>
+                  <CheckBox
+                    onChange={(checked) => this.setState({showBilling: !checked})}
+                    checked={!this.state.showBilling}
+                    modifier='reverse'
+                  />
+                  <span>Use this address as my billing address</span>
+                </EnableBillingLine>
               </FormWrp>
+              {
+                this.state.showBilling && (
+                  <FormWrp>
+                    <FormTitle>Billing address</FormTitle>
+                    <AddressForm />
+                  </FormWrp>
+                )
+              }
               <FormWrp>
                 <FormTitle>Secure credit card payment</FormTitle>
-                <Form />
+                <CardForm />
               </FormWrp>
             </Block>
           </Blocks>
