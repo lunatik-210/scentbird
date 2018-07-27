@@ -12,50 +12,14 @@ import encryption from 'images/encryption.svg';
 import ccards from 'images/ccards.svg';
 
 
+import {cardSchema} from 'models';
+
+
 let dumbCardForm = dumbBem('sb-card-form');
 let CardFormWrp = tx(dumbCardForm)('div');
 
 let Header = tx([{element: 'header'}, dumbCardForm])('div');
 let Encryption = tx([{element: 'encryption'}, dumbCardForm])('div');
-
-
-let cardSchema = [
-  {
-    name: 'card_number',
-    label: 'Credit card number',
-    validation: ['required'],
-    modifiers: ['light'],
-    space: '60%'
-  },
-  {
-    name: 'security_code',
-    label: 'Security code',
-    validation: ['required'],
-    modifiers: ['light'],
-    space: '40%'
-  },
-  {
-    name: 'month',
-    label: 'Month',
-    validation: ['required'],
-    modifiers: ['light'],
-    space: '20%'
-  },
-  {
-    name: 'year',
-    label: 'Year',
-    validation: ['required'],
-    modifiers: ['light'],
-    space: '20%'
-  },
-  {
-    name: 'exp',
-    type: 'text',
-    defaultValue: 'Exp.',
-    modifiers: ['card-exp-text'],
-    space: '60%'
-  }
-];
 
 
 export class CardForm extends Component {

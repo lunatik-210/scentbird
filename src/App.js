@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import {
+  changeFormValue,
+  submitForm
+} from 'redux/actions';
 
 import dumbBem from 'dumb-bem';
 import tx from 'transform-props-with';
@@ -106,7 +113,7 @@ class App extends Component {
 
               <FormSubmitLine>
                 <Button modifier='link'>Back</Button>
-                <Button>BUY NOW</Button>
+                <Button onClick={() => this.props.actions.submitForm()}>BUY NOW</Button>
               </FormSubmitLine>
             </FormBlock>
 
@@ -117,4 +124,15 @@ class App extends Component {
   }
 }
 
-export default App;
+let mapStateToProps = (state) => state;
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({
+      changeFormValue,
+      submitForm
+    }, dispatch)
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

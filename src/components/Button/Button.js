@@ -16,7 +16,7 @@ let ButtonWrp = tx(dumbButton)('div');
 export class Button extends Component {
   render() {
     return (
-      <ButtonWrp modifier={this.props.modifier || ''}>
+      <ButtonWrp onClick={this.props.onClick} modifier={this.props.modifier || ''}>
         <span>{this.props.children}</span>
         <img src={arrowRight} alt='' />
       </ButtonWrp>
