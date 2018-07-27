@@ -17,6 +17,7 @@
   };
 
   @include respond($to-phone) {
+    min-width: 100%;
     flex-direction: column;
     border: none;
     padding: 30px 15px;

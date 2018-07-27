@@ -11,6 +11,7 @@
       margin-bottom: 35px; } }
   @media screen and (max-width: 480px) {
     .sb-preview-item {
+      min-width: 100%;
       flex-direction: column;
       border: none;
       padding: 30px 15px; } }

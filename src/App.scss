@@ -9,6 +9,10 @@
   margin-top: 18px;
   margin-bottom: 250px;
 
+  @include respond($to-phone) {
+    margin-bottom: 150px;
+  };
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -69,6 +73,7 @@
     letter-spacing: 0;
 
     @include respond($to-phone) {
+      text-align: center;
       padding: 0 15px;
     };
 
