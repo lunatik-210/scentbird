@@ -19,10 +19,11 @@
   .sb-checkbox--reverse {
     border-radius: 0px;
     box-shadow: none;
-    background: #FF6BA6;
     border: 1px solid #FF408E; }
     .sb-checkbox--reverse img {
       height: 70%;
       width: auto;
       margin-bottom: 0px;
       margin-left: 0px; }
+    .sb-checkbox--reverse.sb-checkbox--checked {
+      background: #FF6BA6 !important; }

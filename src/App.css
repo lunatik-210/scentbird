@@ -83,3 +83,9 @@
       text-align: left;
       line-height: 20px;
       margin-left: 10px; }
+  .sb-app__form-submit-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; }
+    .sb-app__form-submit-line .sb-button--link {
+      margin-right: 40px; }

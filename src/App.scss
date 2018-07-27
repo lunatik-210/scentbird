@@ -120,4 +120,14 @@
       margin-left: 10px;
     }
   }
+
+  &__form-submit-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .sb-button--link {
+      margin-right: 40px;
+    }
+  }
 }

@@ -1,0 +1,40 @@
+@import "src/mediaquery";
+
+.sb-card-form {
+  background: #FAFAFA;
+  border: 1px solid #E6E6E6;
+  padding: 30px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @include respond($to-phone) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    };
+  }
+
+  &__encryption {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    span {
+      margin-left: 10px;
+      opacity: 0.6;
+      font-family: Helvetica;
+      font-size: 14px;
+      color: #299501;
+      line-height: 20px;
+    }
+
+    @include respond($to-phone) {
+      margin-bottom: 15px;
+    };
+  }
+}

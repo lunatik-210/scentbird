@@ -1,0 +1,67 @@
+@import "src/theme";
+@import "src/mediaquery";
+
+.sb-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: 50px;
+  width: 248px;
+
+  background: $main-color;
+  font-family: Helvetica;
+  font-size: 18px;
+  color: #FFFFFF;
+  line-height: 20px;
+  user-select: none;
+  cursor: pointer;
+  padding: 0px 30px;
+
+  img {
+    margin-left: 50px;
+  }
+
+  &--link {
+    background: none;
+    opacity: 0.4;
+    font-size: 18px;
+    color: #000000;
+    padding: 0;
+    width: auto;
+
+    span {
+      border-bottom: 1px solid  #000000
+    }
+
+    img {
+      display: none;
+    }
+
+    @include respond($to-phone) {
+      display: none;
+    };
+  }
+
+  &:hover {
+    &.sb-button {
+      background: $main-color-light;
+    }
+
+    &.sb-button {
+      &--link {
+        background: none;
+        span {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  @include respond($to-phone) {
+    img {
+      display: none;
+    }
+  };
+}

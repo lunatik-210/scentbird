@@ -40,12 +40,13 @@ export class CheckBox extends Component {
   }
 
   render() {
+    let {checked} = this.state;
     let markIcon = this.props.modifier === 'reverse' ? checkbox2 : checkbox1;
     return (
       <CheckBoxWrp
-        modifier={this.props.modifier || ''}
+        modifier={`${this.props.modifier || ''} ${checked ? 'checked' : ''}`}
         onClick={this.onChange}>
-        {this.state.checked && <img src={markIcon} alt='' />}
+        {checked && <img src={markIcon} alt='' />}
       </CheckBoxWrp>
     );
   }

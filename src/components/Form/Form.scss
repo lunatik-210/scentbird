@@ -10,10 +10,37 @@
   margin-right: -8px;
 
   &__field {
+    display: flex;
+    align-items: center;
     flex-grow: 1;
+    height: 100%;
 
     @include respond($to-phone) {
       width: 100% !important;
+    };
+  }
+
+  &__text-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    height: 68px;
+
+    span {
+      font-family: Helvetica;
+      font-size: 14px;
+    }
+
+    &--card-exp-text {
+      span {
+        font-size: 18px;
+        color: #9B9B9B;
+      }
+    }
+
+    @include respond($to-phone) {
+      display: none;
     };
   }
 }

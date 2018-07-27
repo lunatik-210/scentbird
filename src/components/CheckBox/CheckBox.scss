@@ -26,7 +26,6 @@
   &--reverse {
     border-radius: 0px;
     box-shadow: none;
-    background: $main-color-light;
     border: 1px solid $main-color;
 
     img {
@@ -34,6 +33,12 @@
       width: auto;
       margin-bottom: 0px;
       margin-left: 0px;
+    }
+
+    &.sb-checkbox {
+      &--checked {
+        background: $main-color-light !important;
+      }
     }
   }
 }

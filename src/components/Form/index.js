@@ -81,41 +81,8 @@ let addressSchema = [
     name: 'discount_text',
     type: 'text',
     defaultValue: 'We may send you special discounts and offers',
+    modifiers: ['disabled'],
     space: '50%'
-  }
-];
-
-
-let cardSchema = [
-  {
-    name: 'card_number',
-    label: 'Credit card number',
-    validation: ['required'],
-    space: '60%'
-  },
-  {
-    name: 'security_code',
-    label: 'Security code',
-    validation: ['required'],
-    space: '40%'
-  },
-  {
-    name: 'month',
-    label: 'Month',
-    validation: ['required'],
-    space: '20%'
-  },
-  {
-    name: 'year',
-    label: 'Year',
-    validation: ['required'],
-    space: '20%'
-  },
-  {
-    name: 'exp',
-    type: 'text',
-    label: 'Exp.',
-    space: '60%'
   }
 ];
 
@@ -137,13 +104,6 @@ export class AccountForm extends Component {
 export class AddressForm extends Component {
   render() {
     return <Form schema={addressSchema} />
-  }
-}
-
-
-export class CardForm extends Component {
-  render() {
-    return <Form schema={cardSchema} />
   }
 }
 

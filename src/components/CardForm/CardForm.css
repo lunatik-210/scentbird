@@ -1,0 +1,29 @@
+.sb-card-form {
+  background: #FAFAFA;
+  border: 1px solid #E6E6E6;
+  padding: 30px; }
+  .sb-card-form__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; }
+    @media screen and (max-width: 480px) {
+      .sb-card-form__header {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start; } }
+  .sb-card-form__encryption {
+    display: flex;
+    flex-direction: row;
+    align-items: center; }
+    .sb-card-form__encryption span {
+      margin-left: 10px;
+      opacity: 0.6;
+      font-family: Helvetica;
+      font-size: 14px;
+      color: #299501;
+      line-height: 20px; }
+    @media screen and (max-width: 480px) {
+      .sb-card-form__encryption {
+        margin-bottom: 15px; } }

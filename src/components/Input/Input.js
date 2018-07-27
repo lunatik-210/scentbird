@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import dumbBem from 'dumb-bem';
 import tx from 'transform-props-with';
@@ -16,11 +16,15 @@ let InputEl = tx([{element: 'input'}, dumbInput])('input');
 let Label = tx([{element: 'label'}, dumbInput])('label');
 let ErrorMsg = tx([{element: 'error-msg'}, dumbInput])('span');
 
+
 export class Input extends Component {
-  //static propTypes = {
-    //previewImg: PropTypes.string.isRequired,
-    //bill: PropTypes.object.isRequired
-  //};
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    modifiers: PropTypes.array,
+    defaultValue: PropTypes.any
+  };
+
   constructor(props) {
     super(props);
 
@@ -42,17 +46,42 @@ export class Input extends Component {
     let { hasValue, hasError } = this.state;
     let valid = !hasError && hasValue;
 
+    let modifiers = [];
+
+    if (this.props.modifiers) {
+      modifiers = [...modifiers, ...this.props.modifiers];
+    }
+
+    if (hasError) {
+      modifiers.push('error');
+    }
+
+    if (valid) {
+      modifiers.push('valid');
+    }
+
     return (
       <InputWrp>
         <LabeledInput>
           <InputEl
-            __ref={(input) => { this.input = input; }} 
-            modifier={`${hasError ? 'error ' : ''} ${valid ? 'valid' : ''}`}
-            autoComplete='false'
+            __ref={(input) => { this.input = input; }}
+            type={this.props.name === 'password' ? 'password' : ''}
+            modifier={modifiers.join(' ')}
+            autoComplete='nope'
             onChange={this.onChange}
             onBlur={this.onBlur}
+            defaultValue={this.props.defaultValue}
           />
-          <Label onClick={this.onLabelClick}>{this.props.placeholder}</Label>
+          {
+            this.props.placeholder && (
+              <Label
+                modifier={modifiers.join(' ')}
+                onClick={this.onLabelClick}
+              >
+                {this.props.placeholder}
+              </Label>
+            )
+          }
         </LabeledInput>
         {hasError && <ErrorMsg>Test</ErrorMsg>}
       </InputWrp>

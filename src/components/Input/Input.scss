@@ -12,9 +12,6 @@
     flex-direction: column;
     position: relative;
     width: 100%;
-
-    border: 1px solid #E6E6E6;
-    background: #FFFFFF;
   }
 
   &--error {
@@ -31,6 +28,21 @@
 
     font-family: Helvetica;
     font-size: 18px;
+    background: #FAFAFA;
+    border: 1px solid #E6E6E6;
+
+    &:focus {
+      background: white;
+      border: 1px solid $main-color;
+    }
+
+    &--disabled {
+      pointer-events: none;
+    }
+
+    &--light {
+      background: white !important;
+    }
   }
 
   &__label {
@@ -44,18 +56,20 @@
     margin-top: -9px;
     top: 50%;
     cursor: text;
-    background: white;
+    background: #FAFAFA;
 
     transition: all 0.13s linear;
 
-    &--modifier {
-      top: 0;
-      font-size: 12px;
-      margin-top: -6px;
+    &--disabled {
+      pointer-events: none;
     }
 
     &--error {
       color: $error-color;
+    }
+
+    &--light {
+      background: white;
     }
   }
 
@@ -72,5 +86,6 @@
     top: 0;
     font-size: 12px;
     margin-top: -6px;
+    background: white;
   }
 }

@@ -8,9 +8,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 100%;
-    border: 1px solid #E6E6E6;
-    background: #FFFFFF; }
+    width: 100%; }
   .sb-input--error {
     border-color: #FF0000; }
   .sb-input__input {
@@ -20,7 +18,16 @@
     padding: 12px;
     padding-top: 18px;
     font-family: Helvetica;
-    font-size: 18px; }
+    font-size: 18px;
+    background: #FAFAFA;
+    border: 1px solid #E6E6E6; }
+    .sb-input__input:focus {
+      background: white;
+      border: 1px solid #FF408E; }
+    .sb-input__input--disabled {
+      pointer-events: none; }
+    .sb-input__input--light {
+      background: white !important; }
   .sb-input__label {
     position: absolute;
     font-family: Helvetica;
@@ -30,14 +37,14 @@
     margin-top: -9px;
     top: 50%;
     cursor: text;
-    background: white;
+    background: #FAFAFA;
     transition: all 0.13s linear; }
-    .sb-input__label--modifier {
-      top: 0;
-      font-size: 12px;
-      margin-top: -6px; }
+    .sb-input__label--disabled {
+      pointer-events: none; }
     .sb-input__label--error {
       color: #FF0000; }
+    .sb-input__label--light {
+      background: white; }
   .sb-input__error-msg {
     font-family: Helvetica;
     color: #FF0000;
@@ -48,4 +55,5 @@
   .sb-input__input:focus + .sb-input__label {
     top: 0;
     font-size: 12px;
-    margin-top: -6px; }
+    margin-top: -6px;
+    background: white; }

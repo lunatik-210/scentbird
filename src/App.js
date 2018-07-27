@@ -10,7 +10,8 @@ import {
   UserForm,
   AddressForm,
   CardForm,
-  CheckBox
+  CheckBox,
+  Button
 } from 'components';
 
 import './App.css';
@@ -25,11 +26,14 @@ let AppWrp = tx(dumbApp)('div');
 let Content = tx([{element: 'content'}, dumbApp])('div');
 let Blocks = tx([{element: 'blocks'}, dumbApp])('div');
 let Block = tx([{element: 'block'}, dumbApp])('div');
+let FormBlock = tx([{element: 'block'}, dumbApp])('form');
 let FormWrp = tx([{element: 'form-wrapper'}, dumbApp])('div');
 let FormTitle = tx([{element: 'form-title'}, dumbApp])('span');
 let Header = tx([{element: 'header'}, dumbApp])('header');
 let Text = tx([{element: 'text'}, dumbApp])('span');
 let EnableBillingLine = tx([{element: 'enable-billing-line'}, dumbApp])('span');
+let FormSubmitLine = tx([{element: 'form-submit-line'}, dumbApp])('div');
+
 
 class App extends Component {
   constructor(props) {
@@ -57,17 +61,21 @@ class App extends Component {
         <Content>
           <Header><img src={logo} alt='' /></Header>
           <Blocks>
+
             <Block>
               <PreviewItem {...previewItem} />
               <BirdBanner />
             </Block>
-            <Block modifier='fill-space'>
+
+            <FormBlock modifier='fill-space'>
               <Text modifier='title'>MONTH-TO-MONTH SUBSCRIPTION</Text>
               <Text modifier='description'>Billed monthly. Renews automatically, cancel any time. Free shipping.</Text>
+
               <FormWrp>
                 <FormTitle>Create account</FormTitle>
                 <AccountForm />
               </FormWrp>
+
               <FormWrp>
                 <FormTitle>Shipping address</FormTitle>
                 <UserForm />
@@ -81,6 +89,7 @@ class App extends Component {
                   <span>Use this address as my billing address</span>
                 </EnableBillingLine>
               </FormWrp>
+
               {
                 this.state.showBilling && (
                   <FormWrp>
@@ -89,11 +98,18 @@ class App extends Component {
                   </FormWrp>
                 )
               }
+
               <FormWrp>
                 <FormTitle>Secure credit card payment</FormTitle>
                 <CardForm />
               </FormWrp>
-            </Block>
+
+              <FormSubmitLine>
+                <Button modifier='link'>Back</Button>
+                <Button>BUY NOW</Button>
+              </FormSubmitLine>
+            </FormBlock>
+
           </Blocks>
         </Content>
       </AppWrp>
