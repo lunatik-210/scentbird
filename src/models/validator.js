@@ -56,7 +56,16 @@ export function validateAll(state) {
     if (state.useAddressAsBilling && formName === 'billingForm') return;
 
     _.map(form, (field, fieldName) => {
-      state.forms[formName][fieldName].error = validateFieldValue(field.value, field, form, true);
+      state.forms = {
+        ...state.forms,
+        [formName]: {
+          ...state.forms[formName],
+          [fieldName]: {
+            ...state.forms[formName][fieldName],
+            error: validateFieldValue(field.value, field, form, true)
+          }
+        }
+      }
 
       if (state.forms[formName][fieldName].error) {
         valid = false
