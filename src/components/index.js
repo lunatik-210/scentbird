@@ -5,3 +5,4 @@ export * from './Form';
 export * from './CardForm';
 export * from './CheckBox';
 export * from './Button';
+export * from './GenderBlock';

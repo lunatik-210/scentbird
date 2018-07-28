@@ -19,7 +19,8 @@ import {
   Form,
   CardForm,
   CheckBox,
-  Button
+  Button,
+  GenderBlock
 } from 'components';
 
 import './App.css';
@@ -102,6 +103,10 @@ class App extends Component {
 
             <Block>
               <PreviewItem {...previewItem} />
+            </Block>
+
+            <Block>
+              <GenderBlock />
             </Block>
 
             <FormBlock modifier='fill-space'>
