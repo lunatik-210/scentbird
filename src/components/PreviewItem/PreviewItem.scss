@@ -80,7 +80,9 @@
 
   }
   &__cost-info-right {
-    
+    &--discount {
+      color: $main-color;
+    }
   }
 
   &__coupon-code {

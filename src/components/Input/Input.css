@@ -23,6 +23,17 @@
       pointer-events: none; }
     .sb-input__labeled-input--light.sb-input__labeled-input:after {
       border-top: 6px solid #D8D8D8; }
+  .sb-input__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    right: 10px;
+    opacity: 0.2; }
+    .sb-input__icon img {
+      width: 25px; }
   .sb-input--error {
     border-color: #FF0000; }
   .sb-input__select {
@@ -56,6 +67,8 @@
       pointer-events: none; }
     .sb-input__select--light, .sb-input__input--light {
       background: white !important; }
+    .sb-input__select--icon, .sb-input__input--icon {
+      padding-right: 40px; }
   .sb-input__select {
     padding: 15px;
     padding-right: 30px; }

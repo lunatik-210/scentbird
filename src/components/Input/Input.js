@@ -16,6 +16,7 @@ let InputEl = tx([{element: 'input'}, dumbInput])('input');
 let Select = tx([{element: 'select'}, dumbInput])('select');
 let Label = tx([{element: 'label'}, dumbInput])('label');
 let ErrorMsg = tx([{element: 'error-msg'}, dumbInput])('span');
+let Icon = tx([{element: 'icon'}, dumbInput])('div');
 
 
 export class Input extends Component {
@@ -60,20 +61,27 @@ export class Input extends Component {
       modifiers.push('has-value');
     }
 
+    if (this.props.icon) {
+      modifiers.push('icon');
+    }
+
     return (
       <InputWrp>
         <LabeledInput modifier={(this.props.type === 'select' ? 'select' : '' ) + ` ${modifiers.join(' ')}`}>
+          {this.props.icon && <Icon><img src={this.props.icon} alt=''/></Icon>}
           {
             _.isUndefined(this.props.type) && (
-              <InputEl
-                __ref={(input) => { this.input = input; }}
-                type={this.props.fieldType || ''}
-                modifier={modifiers.join(' ')}
-                autoComplete='nope'
-                onChange={this.onChange}
-                onBlur={this.onBlur}
-                value={this.props.value}
-              />
+              <React.Fragment>
+                <InputEl
+                  __ref={(input) => { this.input = input; }}
+                  type={this.props.fieldType || ''}
+                  modifier={modifiers.join(' ')}
+                  autoComplete='nope'
+                  onChange={this.onChange}
+                  onBlur={this.onBlur}
+                  value={this.props.value}
+                />
+              </React.Fragment>
             )
           }
           {

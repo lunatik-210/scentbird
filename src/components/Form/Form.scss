@@ -14,10 +14,6 @@
     align-items: center;
     flex-grow: 1;
     height: 100%;
-
-    @include respond($to-phone) {
-      width: 100% !important;
-    };
   }
 
   &__text-field {
@@ -42,5 +38,18 @@
     @include respond($to-phone) {
       display: none;
     };
+  }
+
+  &__icon-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 52px;
+    margin: 8px;
+
+    img {
+      width: 25px;
+    }
+
   }
 }

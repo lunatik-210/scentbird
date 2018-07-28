@@ -2,22 +2,36 @@ import {USStates} from './states';
 import {years} from './years';
 import {months} from './months';
 
+import questionIcon from 'images/question.svg';
+
 export let cardSchema = [
   {
     name: 'card_number',
     label: 'Credit card number',
+    icon: questionIcon,
     required: true,
     modifiers: ['light'],
     space: '60%',
-    fieldType: 'number'
+    fieldType: 'number',
+    phoneOrder: 1
   },
   {
     name: 'security_code',
     label: 'Security code',
     required: true,
     modifiers: ['light'],
-    space: '40%',
-    fieldType: 'number'
+    space: '35%',
+    fieldType: 'number',
+    phoneOrder: 4,
+    phoneSpace: '65%'
+  },
+  {
+    name: 'icon',
+    type: 'icon',
+    icon: questionIcon,
+    space: '5%',
+    phoneOrder: 5,
+    phoneSpace: '5%'
   },
   {
     name: 'month',
@@ -26,7 +40,9 @@ export let cardSchema = [
     data: months,
     required: true,
     modifiers: ['light'],
-    space: '25%'
+    space: '25%',
+    phoneOrder: 2,
+    phoneSpace: '50%'
   },
   {
     name: 'year',
@@ -35,7 +51,9 @@ export let cardSchema = [
     data: years,
     required: true,
     modifiers: ['light'],
-    space: '25%'
+    space: '25%',
+    phoneOrder: 3,
+    phoneSpace: '50%'
   },
   {
     name: 'exp',

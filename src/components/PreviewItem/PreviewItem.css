@@ -54,6 +54,8 @@
       font-size: 16px;
       color: #151515;
       letter-spacing: 0; }
+  .sb-preview-item__cost-info-right--discount {
+    color: #FF408E; }
   .sb-preview-item__coupon-code {
     font-family: Helvetica;
     font-size: 16px;

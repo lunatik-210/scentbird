@@ -57,7 +57,7 @@ export class PreviewItem extends Component {
           </CostInfoLine>
           <CostInfoLine>
             <CostInfoLeft>Discount</CostInfoLeft>
-            <CostInfoRight>{bill.discount}</CostInfoRight>
+            <CostInfoRight modifier='discount'>{bill.discount}</CostInfoRight>
           </CostInfoLine>
           <CostInfoLine>
             <CostInfoLeft>Credit (Balance $100)</CostInfoLeft>

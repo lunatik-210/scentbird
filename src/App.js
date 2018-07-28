@@ -67,7 +67,9 @@ class App extends Component {
       }
     }
 
-    if (this.props.size.width <= 992) return this.renderToLaptop(previewItem);
+    let isPhone = this.props.size.width <= 480;
+
+    if (this.props.size.width <= 992) return this.renderToLaptop(previewItem, isPhone);
 
     return (
       <AppWrp>
@@ -81,7 +83,7 @@ class App extends Component {
 
             <FormBlock modifier='fill-space'>
               {this.renderHeading()}
-              {this.renderForms()}
+              {this.renderForms(isPhone)}
             </FormBlock>
 
           </Blocks>
@@ -90,7 +92,7 @@ class App extends Component {
     );
   }
 
-  renderToLaptop(previewItem) {
+  renderToLaptop(previewItem, isPhone) {
     return (
       <AppWrp>
         <Content>
@@ -103,34 +105,12 @@ class App extends Component {
             </Block>
 
             <FormBlock modifier='fill-space'>
-              {this.renderForms()}
+              {this.renderForms(isPhone)}
             </FormBlock>
 
             <Block>
               <BirdBanner />
             </Block>
-          </Blocks>
-        </Content>
-      </AppWrp>
-    );
-  }
-
-  renderToPhone(previewItem) {
-    return (
-      <AppWrp>
-        <Content>
-          <Header><img src={logo} alt='' /></Header>
-          <Blocks>
-            <Block>
-              <PreviewItem {...previewItem} />
-              <BirdBanner />
-            </Block>
-
-            <FormBlock modifier='fill-space'>
-              {this.renderHeading()}
-              {this.renderForms()}
-            </FormBlock>
-
           </Blocks>
         </Content>
       </AppWrp>
@@ -146,7 +126,7 @@ class App extends Component {
     )
   }
 
-  renderForms() {
+  renderForms(isPhone) {
     return (
       <React.Fragment>
         <FormWrp>
@@ -155,6 +135,7 @@ class App extends Component {
             actions={this.props.actions}
             schema={this.props.forms.accountForm}
             name='accountForm'
+            isPhone={isPhone}
           />
         </FormWrp>
 
@@ -164,16 +145,19 @@ class App extends Component {
             actions={this.props.actions}
             schema={this.props.forms.userForm}
             name='userForm'
+            isPhone={isPhone}
           />
           <Form 
             actions={this.props.actions}
             schema={this.props.forms.shippingForm}
             name='shippingForm'
+            isPhone={isPhone}
           />
           <Form
             actions={this.props.actions}
             schema={this.props.forms.phoneForm}
             name='phoneForm'
+            isPhone={isPhone}
           />
           <EnableBillingLine>
             <CheckBox
@@ -193,6 +177,7 @@ class App extends Component {
                 actions={this.props.actions}
                 schema={this.props.forms.billingForm}
                 name='billingForm'
+                isPhone={isPhone}
               />
             </FormWrp>
           )
@@ -204,6 +189,7 @@ class App extends Component {
             actions={this.props.actions}
             schema={this.props.forms.cardForm}
             name='cardForm'
+            isPhone={isPhone}
           />
         </FormWrp>
 

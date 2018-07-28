@@ -15,13 +15,14 @@ let FormWrp = tx(dumbForm)('div');
 
 let FormField = tx([{element: 'field'}, dumbForm])('div');
 let FormTextField = tx([{element: 'text-field'}, dumbForm])('div');
-
+let FormIconField = tx([{element: 'icon-field'}, dumbForm])('div');
 
 export class Form extends Component {
   static propTypes = {
     schema: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
+    isPhone: PropTypes.bool
   };
 
   constructor(props) {
@@ -29,18 +30,26 @@ export class Form extends Component {
 
     _.bindAll(this, [
       'renderInput',
-      'renderText'
+      'renderText',
+      'renderIcon'
     ]);
   } 
 
   render() {
+    let {isPhone, schema} = this.props;
+
+    if (isPhone) {
+      schema = _.orderBy(schema, 'phoneOrder');
+    }
+
     return (
       <FormWrp>
-        {_.map(this.props.schema, field => (
-          <FormField key={field.name} style={{width: field.space}}>
+        {_.map(schema, field => (
+          <FormField key={field.name} style={{width: isPhone ? (field.phoneSpace || '100%') : field.space}}>
             {_.isUndefined(field.type) && this.renderInput(field)}
             {field.type === 'select' && this.renderInput(field)}
             {field.type === 'text' && this.renderText(field)}
+            {field.type === 'icon' && this.renderIcon(field)}
           </FormField>
         ))}
       </FormWrp>
@@ -59,6 +68,7 @@ export class Form extends Component {
         data={field.data}
         value={field.value}
         error={field.error}
+        icon={field.icon}
         onChange={(value) => this.props.actions.changeFormValue(this.props.name, field.name, value)}
       />
     )
@@ -73,6 +83,14 @@ export class Form extends Component {
       >
         <span>{field.defaultValue}</span>
       </FormTextField>
+    )
+  }
+
+  renderIcon(field) {
+    return (
+      <FormIconField>
+        <img src={field.icon} alt='' />
+      </FormIconField>
     )
   }
 }

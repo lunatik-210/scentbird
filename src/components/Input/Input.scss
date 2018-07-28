@@ -44,6 +44,21 @@
     }
   }
 
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    right: 10px;
+    opacity: 0.2;
+
+    img {
+      width: 25px;
+    }
+  }
+
   &--error {
     border-color: $error-color;
   }
@@ -92,6 +107,10 @@
 
     &--light {
       background: white !important;
+    }
+
+    &--icon {
+      padding-right: 40px;
     }
   }
 

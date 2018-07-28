@@ -22,7 +22,9 @@ let Encryption = tx([{element: 'encryption'}, dumbCardForm])('div');
 export class CardForm extends Component {
   static propTypes = {
     schema: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    name: PropTypes.string.isRequired,
+    isPhone: PropTypes.bool
   };
 
   render() {
@@ -38,6 +40,7 @@ export class CardForm extends Component {
         <Form 
           actions={this.props.actions}
           schema={this.props.schema}
+          isPhone={this.props.isPhone}
           name='cardForm'
         />
       </CardFormWrp>
