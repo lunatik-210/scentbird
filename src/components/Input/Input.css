@@ -70,7 +70,6 @@
     .sb-input__select--icon, .sb-input__input--icon {
       padding-right: 40px; }
   .sb-input__select {
-    padding: 15px;
     padding-right: 30px; }
     .sb-input__select:focus {
       background: #FAFAFA;
