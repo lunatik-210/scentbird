@@ -24,6 +24,7 @@ import {
 } from 'components';
 
 import './App.css';
+import './fonts.css';
 
 import logo from 'images/logo.svg';
 import spirit from 'images/spirit.svg';

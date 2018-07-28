@@ -13,6 +13,8 @@
   user-select: none;
   cursor: pointer;
   padding: 0px 30px; }
+  .sb-button span {
+    margin-bottom: -5px; }
   @media screen and (max-width: 992px) {
     .sb-button {
       width: 290px; } }

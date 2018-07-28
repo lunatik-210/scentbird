@@ -19,6 +19,10 @@
   cursor: pointer;
   padding: 0px 30px;
 
+  span {
+    margin-bottom: -5px;
+  }
+
   @include respond($to-laptop) {
     width: 290px;
   };
