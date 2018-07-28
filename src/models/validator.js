@@ -23,8 +23,7 @@ export function validateFieldValue(value, field, form, strong = false) {
   }
 
   if (field.name === 'security_code') {
-    let check = cardValidator.cvv(value, 4);
-    if (!check.isPotentiallyValid || (strong && !check.isValid)) return 'Is not a valid number';
+    if (value && value.length < 3 || value.length > 5) return 'Invalid security code';
     if (value === '111') return '111 is also not valid';
   }
 
