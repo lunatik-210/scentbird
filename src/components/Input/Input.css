@@ -62,6 +62,13 @@
     .sb-input__select::-webkit-outer-spin-button, .sb-input__select::-webkit-inner-spin-button, .sb-input__input::-webkit-outer-spin-button, .sb-input__input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0; }
+    .sb-input__select::-webkit-contacts-auto-fill-button, .sb-input__input::-webkit-contacts-auto-fill-button {
+      visibility: hidden;
+      display: none !important;
+      pointer-events: none;
+      height: 0;
+      width: 0;
+      margin: 0; }
     .sb-input__select:focus, .sb-input__input:focus {
       background: white;
       border: 1px solid #FF408E; }
