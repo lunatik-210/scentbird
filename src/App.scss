@@ -135,6 +135,11 @@
       line-height: 20px;
       margin-left: 10px;
     }
+
+    @include respond($to-phone) {
+      margin-bottom: 40px;
+      margin-top: 10px;
+    };
   }
 
   &__form-submit-line {

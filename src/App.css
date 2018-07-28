@@ -94,6 +94,10 @@
       text-align: left;
       line-height: 20px;
       margin-left: 10px; }
+    @media screen and (max-width: 480px) {
+      .sb-app__enable-billing-line {
+        margin-bottom: 40px;
+        margin-top: 10px; } }
   .sb-app__form-submit-line {
     display: flex;
     flex-direction: row;
