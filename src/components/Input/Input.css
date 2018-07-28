@@ -34,6 +34,8 @@
     opacity: 0.2; }
     .sb-input__icon img {
       width: 25px; }
+    .sb-input__icon--valid {
+      opacity: 0.6; }
   .sb-input--error {
     border-color: #FF0000; }
   .sb-input__select {

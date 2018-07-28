@@ -142,6 +142,7 @@ class App extends Component {
             schema={this.props.forms.accountForm}
             name='accountForm'
             isPhone={isPhone}
+            submitted={this.props.submitted}
           />
         </FormWrp>
 
@@ -152,18 +153,21 @@ class App extends Component {
             schema={this.props.forms.userForm}
             name='userForm'
             isPhone={isPhone}
+            submitted={this.props.submitted}
           />
           <Form 
             actions={this.props.actions}
             schema={this.props.forms.shippingForm}
             name='shippingForm'
             isPhone={isPhone}
+            submitted={this.props.submitted}
           />
           <Form
             actions={this.props.actions}
             schema={this.props.forms.phoneForm}
             name='phoneForm'
             isPhone={isPhone}
+            submitted={this.props.submitted}
           />
           <EnableBillingLine>
             <CheckBox
@@ -184,6 +188,7 @@ class App extends Component {
                 schema={this.props.forms.billingForm}
                 name='billingForm'
                 isPhone={isPhone}
+                submitted={this.props.submitted}
               />
             </FormWrp>
           )

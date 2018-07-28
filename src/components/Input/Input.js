@@ -7,6 +7,7 @@ import tx from 'transform-props-with';
 
 import './Input.css';
 
+import mark from 'images/checkbox1.svg';
 
 let dumbInput = dumbBem('sb-input');
 let InputWrp = tx(dumbInput)('div');
@@ -32,20 +33,15 @@ export class Input extends Component {
 
     this.input = React.createRef();
 
-    this.state = {
-      hasValue: false
-    }
-
     _.bindAll(this, [
       'onChange',
-      'onBlur',
       'onLabelClick'
     ]);
   }
 
   render() {
-    let { hasValue } = this.state;
     let hasError = !!this.props.error;
+    let valid = this.props.value && !hasError && this.props.formSubmitted;
 
     let modifiers = [];
 
@@ -57,7 +53,7 @@ export class Input extends Component {
       modifiers.push('error');
     }
 
-    if (hasValue) {
+    if (this.props.value) {
       modifiers.push('has-value');
     }
 
@@ -65,10 +61,15 @@ export class Input extends Component {
       modifiers.push('icon');
     }
 
+    if (valid) {
+      modifiers.push('valid');
+    }
+
     return (
       <InputWrp>
         <LabeledInput modifier={(this.props.type === 'select' ? 'select' : '' ) + ` ${modifiers.join(' ')}`}>
           {this.props.icon && <Icon><img src={this.props.icon} alt=''/></Icon>}
+          {valid && _.isUndefined(this.props.type) && <Icon modifier='valid'><img src={mark} alt=''/></Icon>}
           {
             _.isUndefined(this.props.type) && (
               <React.Fragment>
@@ -78,7 +79,6 @@ export class Input extends Component {
                   modifier={modifiers.join(' ')}
                   autoComplete='nope'
                   onChange={this.onChange}
-                  onBlur={this.onBlur}
                   value={this.props.value}
                 />
               </React.Fragment>
@@ -113,18 +113,7 @@ export class Input extends Component {
 
   onChange(event) {
     let value = event.target.value;
-
-    this.setState({
-      hasValue: Boolean(value)
-    });
-
     _.isFunction(this.props.onChange) && this.props.onChange(value);
-  }
-
-  onBlur(event) {
-    this.setState({
-      hasValue: Boolean(event.target.value)
-    });
   }
 
   onLabelClick() {

@@ -22,7 +22,8 @@ export class Form extends Component {
     schema: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
-    isPhone: PropTypes.bool
+    isPhone: PropTypes.bool,
+    submitted: PropTypes.bool
   };
 
   constructor(props) {
@@ -69,6 +70,7 @@ export class Form extends Component {
         value={field.value}
         error={field.error}
         icon={field.icon}
+        formSubmitted={this.props.submitted}
         onChange={(value) => this.props.actions.changeFormValue(this.props.name, field.name, value)}
       />
     )

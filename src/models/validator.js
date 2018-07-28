@@ -38,6 +38,10 @@ export function validateFieldValue(value, field, form, strong = false) {
     if (!check.isPotentiallyValid || (strong && !check.isValid)) return 'Invalid year';
   }
 
+  if (field.name === 'mobile_phone' && value) {
+    if (!validator.isMobilePhone(value, 'en-US', {strictMode: true})) return 'Phone number is incorrect, only US';
+  }
+
   if (field.fieldType === 'text' && !/^[a-zA-Z ]*$/.test(value)) return 'Shoud be only character';
 
   if (field.fieldType === 'number' && !validator.isNumeric(value)) return 'Shoud be a number';
